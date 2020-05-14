@@ -25,6 +25,7 @@ Available Commands:
     applyPolicy     Enable/Disable a named policy
     applySettings   Update the label, language, and enable/disable the passphrase
     changePin       Change or add a pin to the device
+    changeWipeCode  Change or add a wipe code to the device
     clearSession    Clear session data such as the pin session and passphrase
     debugGetState   Get device debug info. This REVEALS SECRETS and can only be used with debug enabled firmware
     decryptKeyValue Decrypt a value with a given key and nodepath
@@ -42,6 +43,7 @@ Available Commands:
     ping            Ping the device with a message
     recoverDevice   Begin interactive device recovery
     removePin       Disable pin on the device
+    removeWipeCode  Disable wipe code on the device
     replay          Replay messages in kk log format to the device
     resetDevice     Reset the device and generate a new seed using device RNG
     signEthTx       Sign an ethereum transaction

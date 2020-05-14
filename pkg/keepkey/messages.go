@@ -424,6 +424,33 @@ func (kk *Keepkey) RemovePin() error {
 	return nil
 }
 
+// ChangeWipeCode requests setting/changing the wipe code
+func (kk *Keepkey) ChangeWipeCode() error {
+	change := &kkproto.ChangeWipeCode{}
+
+	//  User may be prompted for wipe code up to 2 times
+	if _, err: = kk.keepkeyExchange(change, &kkproto.PinMatrixRequest{}, &kkproto.Success{}); err != nil {
+		return err
+	}
+	return nil
+}
+
+// RemoveWipeCode disables wipe code protection for the device. If a wipe code is currently enabled
+// it will prompt the user to enter the current pin
+func (kk *Keepkey) RemoveWipeCode() error {
+
+	t := true
+	rem := &kkproto.ChangeWipeCode{
+		Remove: &t,
+	}
+
+	if _, err := kk.keepkeyExchange(rem, &kkproto.PinMatrixRequest{}, &kkproto.Success{}); err != nil {
+		return err
+	}
+	return nil
+}
+
+
 // WipeDevice wipes all sensitive data and settings
 func (kk *Keepkey) WipeDevice() error {
 
